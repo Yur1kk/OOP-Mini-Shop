@@ -8,38 +8,38 @@ class Product {
 }
 
 class ShoppingCart {
-   items = [];
+  items = [];
 
-   set cartItems(value) {
+  set cartItems(value) {
     this.items = value;
-    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(2)}</h2>`;
-   }
+    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(
+      2
+    )}</h2>`;
+  }
 
-   get totalAmount() {
-    const sum = this.items.reduce((prevVal, curItem)=> {
+  get totalAmount() {
+    const sum = this.items.reduce((prevVal, curItem) => {
       return prevVal + curItem;
     }, 0);
     return sum;
-   }
-   
-   addProduct(product) {
+  }
+
+  addProduct(product) {
     const updatedItems = [...this.items];
     updatedItems.push(product);
     this.cartItems = updatedItems;
-    
-   }
+  }
 
-
-   render() {
-     const cartEl = document.createElement('section');
-     cartEl.innerHTML = `
+  render() {
+    const cartEl = document.createElement("section");
+    cartEl.innerHTML = `
      <h2>Total: \$${0}</h2>
      <button>Order Now!</button>
      `;
-     cartEl.className = 'cart';
-     this.totalOutput = cartEl.querySelector('h2');
-     return cartEl;
-   }
+    cartEl.className = "cart";
+    this.totalOutput = cartEl.querySelector("h2");
+    return cartEl;
+  }
 }
 
 class ProductItem {
@@ -100,8 +100,6 @@ class ProductList {
   }
 }
 
-
-
 class Shop {
   render() {
     const renderHook = document.getElementById("app");
@@ -120,7 +118,6 @@ class App {
     const shop = new Shop();
     shop.render();
     this.cart = shop.cart;
-    
   }
 
   static addProductToCart(product) {
