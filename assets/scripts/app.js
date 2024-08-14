@@ -1,19 +1,31 @@
+class Product {
+  title = "DEFAULT";
+  imageUrl;
+  description;
+  price;
+
+  constructor(title, image, desc, price) {
+    this.title = title;
+    this.imageUrl = image;
+    this.description = desc;
+    this.price = price;
+  }
+}
+
 const productList = {
   products: [
-    {
-      title: "A Pillow",
-      imageUrl:
-        "https://cdn.thewirecutter.com/wp-content/media/2023/01/bedpillows-2048px-9987.jpg?auto=webp&quality=75&width=1024",
-      price: 19.99,
-      description: "A soft pillow!",
-    },
-    {
-      title: "A Carpet",
-      imageUrl:
+    new Product(
+      "A Pillow",
+      "https://cdn.thewirecutter.com/wp-content/media/2023/01/bedpillows-2048px-9987.jpg?auto=webp&quality=75&width=1024",
+      "A soft pillow!",
+      19.99
+    ),
+    new Product(
+        "A Carpet",
         "https://m.media-amazon.com/images/I/81GyZXnRB5L._AC_UF894,1000_QL80_.jpg",
-      price: 89.99,
-      description: "A carpet which you might like or not.",
-    },
+        "A carpet which you might like or not.",
+        89.99
+      ),
   ],
   render() {
     const renderHook = document.getElementById("app");
