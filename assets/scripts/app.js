@@ -43,14 +43,12 @@ class ShoppingCart extends Component {
 
   set cartItems(value) {
     this.items = value;
-    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(
-      2
-    )}</h2>`;
+    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(2)}</h2>`;
   }
 
   get totalAmount() {
     const sum = this.items.reduce((prevVal, curItem) => {
-      return prevVal + curItem;
+      return prevVal + curItem.price;
     }, 0);
     return sum;
   }
@@ -64,13 +62,18 @@ class ShoppingCart extends Component {
     updatedItems.push(product);
     this.cartItems = updatedItems;
   }
-
+  orderProducts() {
+    console.log('Ordering...');
+    console.log(this.items);
+  }
   render() {
     const cartEl = this.createRootElement("section", "cart");
     cartEl.innerHTML = `
      <h2>Total: \$${0}</h2>
      <button>Order Now!</button>
      `;
+     const orderButton = cartEl.querySelector('button');
+     orderButton.addEventListener('click', this.orderProducts.bind(this));
     this.totalOutput = cartEl.querySelector("h2");
   }
 }
